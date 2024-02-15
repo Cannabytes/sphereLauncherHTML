@@ -11,8 +11,14 @@ var numCPU = 1;
 var clickToStartLauncher = false;
 $(".chronicle").text(chronicle)
 
-var url = new URL("https://" + domain);
-$(".mainDomain").text(url.hostname);
+var url = new URL(window.location.href);
+
+var domain = url.hostname;
+if (domain.startsWith("www.")) {
+    domain = domain.slice(4);
+}
+
+$(".mainDomain").text(domain);
 $('title').text("Launcher" + " " + chronicle);
 $("#domainLauncher").text(domain)
 
